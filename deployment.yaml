@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: studentapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      run: studentapp
+  template:
+    metadata:
+      labels:
+        run: studentapp
+    spec:
+      containers:
+      - name: studentapp
+        image: amithps/studentapp:v1
+        ports:
+          - containerPort: 8080
+        imagePullPolicy: IfNotPresent
